@@ -33,9 +33,9 @@ public class Conexion {
 
             conectar = DriverManager.getConnection(ruta, usuario, contraseña);
 
-            System.out.println("Se conecto");
+//            System.out.println("Se conecto");
 
-            //JOptionPane.showMessageDialog(null, "Se conecto correctamente");
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "NO se conecto correctamente" + e);
         }

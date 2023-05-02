@@ -5,9 +5,11 @@
 package com.mycompany.argprogramafinal;
 
 import com.google.gson.Gson;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -23,6 +25,9 @@ public class Alumno {
     String nombre;
     int legajo;
     ArrayList<String> materiasAprobadas = new ArrayList<>();
+    
+    HashMap<String, String> hm = new HashMap<>();
+    
 
     public Alumno(String nombre, int legajo) {
         this.nombre = nombre;
@@ -84,9 +89,34 @@ public class Alumno {
         ArrayList<String> materiasAprobadas = new ArrayList<>();
 
         String input;
+            
+                conexion.estableceConexion();
+
+        Statement sentencia = conexion.conectar.createStatement();
+        
+                // Crear una sentencia SQL que devuelva el nombre de la tabla
+         String consulta = "SELECT nombre FROM materias";
+
+         // Ejecutar la consulta y obtener el resultado
+
+         ResultSet resultado = sentencia.executeQuery(consulta);
+
+         // Imprimir el nombre de la tabla
+         if (resultado.next()) {
+            String nombreTabla = resultado.getString("nombre");
+            System.out.println("Materias en el sistema: " + nombreTabla);
+         }
+
+         // Cerrar la conexión y liberar recursos
+         resultado.close();
+        
+           conexion.cerrarConnection();
+        
+        
+        
 
             for (int i = 0; i < numero; i++) {
-                System.out.println("Elige entre: Matematica, Fisica y Quimica");
+//                System.out.println("Elige entre: Matematica, Fisica y Quimica");
                 input = sc.next();
                 materiasAprobadas.add(input);
             }
@@ -97,7 +127,7 @@ public class Alumno {
 
         Statement stmt = conexion.conectar.createStatement();
         stmt.executeUpdate("INSERT INTO alumnos VALUES(\"" + nombre + "\",\"" + legajo + "\",'" + materiasAprobadasJson + "');");
-        
+       
         conexion.cerrarConnection();
         
     }

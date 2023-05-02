@@ -1,0 +1,32 @@
+create database argprograma;
+show databases;
+use argprograma;
+
+SELECT legajo from alumnos;
+
+select * from alumnos;
+select * from materias;
+select * from ingreso;
+
+select nombre from materias;
+
+INSERT INTO alumnos (nombre,legajo) values ('ricardo',46351);
+INSERT INTO alumnos (nombre,legajo) values ('fabiola',46352);
+INSERT INTO alumnos (nombre,legajo) values ('alberto',46353);
+
+drop table alumnos;
+drop table materias;
+
+CREATE TABLE materias (
+
+    nombre varchar(255),
+    correlativas varchar(255)
+);
+
+CREATE TABLE alumnos (
+    PRIMARY KEY (legajo),
+    nombre varchar(255),
+    legajo int not null,
+    materiasAprobadas varchar(50)
+);
+
