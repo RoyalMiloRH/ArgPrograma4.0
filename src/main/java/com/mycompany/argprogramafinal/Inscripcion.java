@@ -100,7 +100,7 @@ public class Inscripcion {
         
         Conexion conexion = new Conexion();
         conexion.estableceConexion();
-        
+            
         Statement stmt = conexion.conectar.createStatement();
         
         ResultSet rs = stmt.executeQuery("SELECT * FROM alumnos WHERE legajo="+legajo+";");
