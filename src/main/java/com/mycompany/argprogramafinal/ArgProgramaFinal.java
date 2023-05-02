@@ -23,9 +23,6 @@ public class ArgProgramaFinal {
     
     public static void main(String[] args) throws SQLException, JsonProcessingException {
 
-//        crearMateria();
-//        
-//        traerDatos();
 
 //
 //           System.out.println("Para Ingresar coloque su numero de legajo");
